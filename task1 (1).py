@@ -20,7 +20,7 @@ def exercise_5(df):
     return df['nameDest'].value_counts().head(10)
 
 def exercise_6(df):
-    pass
+    return df[df['isFraud'] == 1]
 
 def exercise_7(df):
     pass
