@@ -57,7 +57,22 @@ def visual_1(df):
 visual_1(df)
 
 def visual_2(df):
-    pass
+    def query(df):
+        df['Origin Delta'] = df['oldbalanceOrg'] - df['newbalanceOrig']
+        df['Destination Delta'] = df['oldbalanceDest'] - df['newbalanceDest']
+        return df[df['type'] == 'CASH_OUT']
+
+    plot = query(df).plot.scatter(x='Origin Delta', y='Destination Delta')
+    plot.set_title('Source v. Destination Balance Delta for Cash Out Transactions')
+    plot.set_xlim(left=-1e3, right=1e3)
+    plot.set_ylim(bottom=-1e3, top=1e3)
+    return 'A cash out occurs when a partipant withdraws money. It is reassuring ' \
+           'that only two of the four quadrants have activity, as the contrary ' \
+           'would indicate something wrong with the dataset. The y=-x line is ' \
+           'particularly interesting as it indicates instant settlement.'
+
+
+visual_2(df)
 
 def exercise_custom(df):
     pass
