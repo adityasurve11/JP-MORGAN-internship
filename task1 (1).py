@@ -75,7 +75,7 @@ def visual_2(df):
 visual_2(df)
 
 def exercise_custom(df):
-    pass
+    return df[['isFlaggedFraud', 'isFraud']].value_counts()
     
 def visual_custom(df):
     pass
