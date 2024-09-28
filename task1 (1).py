@@ -28,7 +28,26 @@ def exercise_7(df):
     return df1
 
 def visual_1(df):
-    pass
+    def transaction_counts(df):
+        return df['type'].value_counts()
+
+    def transaction_counts_split_by_fraud(df):
+        return df.groupby(by=['type', 'isFraud']).size()
+
+    fig, axs = plt.subplots(2, figsize=(6, 10))
+    transaction_counts(df).plot(ax=axs[0], kind='bar')
+    axs[0].set_title('Transaction Types Frequencies')
+    axs[0].set_xlabel('Transaction Type')
+    axs[0].set_ylabel('Occurrence')
+    transaction_counts_split_by_fraud(df).plot(ax=axs[1], kind='bar')
+    axs[1].set_title('Transaction Types Frequencies, Split by Fraud')
+    axs[1].set_xlabel('Transaction Type, Fraud')
+    axs[1].set_ylabel('Occurrence')
+    fig.suptitle('Transaction Types')
+    fig.tight_layout(rect=[0, 0.03, 1, 0.95])
+    for ax in axs:
+        for p in ax.patches:
+            ax.annotate(p.get_height(), (p.get_x(), p.get_height()))
 
 def visual_2(df):
     pass
