@@ -48,6 +48,13 @@ def visual_1(df):
     for ax in axs:
         for p in ax.patches:
             ax.annotate(p.get_height(), (p.get_x(), p.get_height()))
+    return 'While the transaction frequencies depend on the whims of the ' \
+            'available data, what is interesting here is that fraudulent ' \
+            'activity is only seen on CASH_OUT and TRANSFER transactions. ' \
+            'This insight inform management to focus the effort of manual ' \
+            'reviews which could result in less fraud being missed.'
+
+visual_1(df)
 
 def visual_2(df):
     pass
