@@ -78,4 +78,19 @@ def exercise_custom(df):
     return df[['isFlaggedFraud', 'isFraud']].value_counts()
     
 def visual_custom(df):
-    pass
+    fig, ax = plt.subplots(1, figsize=(4, 6))
+    exercise_custom(df).plot(ax=ax, kind='bar')
+    ax.set_title('Fraud Detection')
+    ax.set_xlabel('isFlaggedFraud, isFraud')
+    ax.set_ylabel('Occurrence')
+    for p in ax.patches:
+        ax.annotate(p.get_height(), (p.get_x(), p.get_height()))
+
+    return "Here we see that the fraud detection at play misses almost all " \
+           "of the fradulent activity. However, there are no false negatives " \
+           "either. One interpretation could be that the detector does not " \
+           "report until it has a high degree of confidence."
+
+
+visual_custom(df)
+
