@@ -23,7 +23,9 @@ def exercise_6(df):
     return df[df['isFraud'] == 1]
 
 def exercise_7(df):
-    pass
+    df1 = df.groupby('nameOrig')['nameDest'].agg(['nunique'])
+    df1.sort_values(by=('nunique'), ascending=False, inplace=True)
+    return df1
 
 def visual_1(df):
     pass
